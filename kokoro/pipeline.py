@@ -113,6 +113,7 @@ class KPipeline:
                                        Try setting device='cpu' or check CUDA installation.""")
                 raise
         self.voices = {}
+        print(f"device: {device}")
         if lang_code in 'ab':
             try:
                 fallback = espeak.EspeakFallback(british=lang_code=='b')
@@ -237,9 +238,18 @@ class KPipeline:
         pack: torch.FloatTensor,
         speed: Union[float, Callable[[int], float]] = 1
     ) -> KModel.Output:
+        import time
         if callable(speed):
             speed = speed(len(ps))
-        return model(ps, pack[len(ps)-1], speed, return_output=True)
+        start_time = time.time()
+        output = model(ps, pack[len(ps)-1], speed, return_output=True)
+        print(f"CUDA available: {torch.cuda.is_available()}")
+        print(f"Device: {model.device}")
+        end_time = time.time()
+        print(f"Time taken 5: {end_time - start_time} seconds")
+        with open("inference_times.txt", "a") as log:
+            log.write(f"{ps}\t{len(ps)}\t{end_time - start_time:.4f}\n")
+        return output
 
     def generate_from_tokens(
         self,
@@ -273,7 +283,11 @@ class KPipeline:
             logger.debug("Processing phonemes from raw string")
             if len(tokens) > 510:
                 raise ValueError(f'Phoneme string too long: {len(tokens)} > 510')
+            import time
+            start_time = time.time()
             output = KPipeline.infer(model, tokens, pack, speed) if model else None
+            end_time = time.time()
+            print(f"Time taken 1: {end_time - start_time} seconds")
             yield self.Result(graphemes='', phonemes=tokens, output=output)
             return
         
@@ -286,7 +300,11 @@ class KPipeline:
                 logger.warning(f"Unexpected len(ps) == {len(ps)} > 510 and ps == '{ps}'")
                 logger.warning("Truncating to 510 characters")
                 ps = ps[:510]
+            import time
+            start_time = time.time()
             output = KPipeline.infer(model, ps, pack, speed) if model else None
+            end_time = time.time()
+            print(f"Time taken 2: {end_time - start_time} seconds")
             if output is not None and output.pred_dur is not None:
                 KPipeline.join_timestamps(tks, output.pred_dur)
             yield self.Result(graphemes=gs, phonemes=ps, tokens=tks, output=output)
@@ -390,7 +408,11 @@ class KPipeline:
                     elif len(ps) > 510:
                         logger.warning(f"Unexpected len(ps) == {len(ps)} > 510 and ps == '{ps}'")
                         ps = ps[:510]
+                    import time
+                    start_time = time.time()
                     output = KPipeline.infer(model, ps, pack, speed) if model else None
+                    end_time = time.time()
+                    print(f"Time taken 3: {end_time - start_time} seconds")
                     if output is not None and output.pred_dur is not None:
                         KPipeline.join_timestamps(tks, output.pred_dur)
                     yield self.Result(graphemes=gs, phonemes=ps, tokens=tks, output=output, text_index=graphemes_index)
@@ -437,6 +459,9 @@ class KPipeline:
                     elif len(ps) > 510:
                         logger.warning(f'Truncating len(ps) == {len(ps)} > 510')
                         ps = ps[:510]
-                        
+                    import time
+                    start_time = time.time()
                     output = KPipeline.infer(model, ps, pack, speed) if model else None
+                    end_time = time.time()
+                    print(f"Time taken 4: {end_time - start_time} seconds")
                     yield self.Result(graphemes=chunk, phonemes=ps, output=output, text_index=graphemes_index)

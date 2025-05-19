@@ -11,6 +11,8 @@ pip not installed: `uv pip install pip`
 
 espeak not installed: `apt-get install espeak-ng`
 """
+import os
+os.environ["MECABRC"] = "/etc/mecabrc" 
 
 import argparse
 import wave
@@ -54,7 +56,7 @@ def generate_and_save_audio(
         wav_file.setnchannels(1)  # Mono audio
         wav_file.setsampwidth(2)  # 2 bytes per sample (16-bit audio)
         wav_file.setframerate(24000)  # Sample rate
-
+        import time
         for result in generate_audio(
             text, kokoro_language=kokoro_language, voice=voice, speed=speed
         ):

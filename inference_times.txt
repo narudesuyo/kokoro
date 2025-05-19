@@ -1,0 +1,28 @@
+aaː aː	6	1.2933
+aa aa aa aa aa	14	1.2379
+aa aa aa aa aa aa aa a	22	1.4189
+aa aa aa aa aa aa aa aa aa aa	29	1.4907
+aa aa aa aa aa aa aa aa aa aa aa aa a	37	1.2698
+aaː aː	6	1.1823
+aa aa aa aa aa	14	1.2111
+aa aa aa aa aa aa aa a	22	1.3693
+aa aa aa aa aa aa aa aa aa aa	29	1.2691
+aa aa aa aa aa aa aa aa aa aa aa aa a	37	1.3915
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa	44	1.4135
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa	89	1.5181
+aaː aː	6	1.2292
+aa aa aa aa aa	14	1.3762
+aa aa aa aa aa aa aa a	22	1.2939
+aa aa aa aa aa aa aa aa aa aa	29	1.2792
+aa aa aa aa aa aa aa aa aa aa aa aa a	37	1.4312
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa	44	1.3305
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa	89	1.3439
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa	179	1.5893
+aaː aː	6	2.3358
+aa aa aa aa aa	14	2.6541
+aa aa aa aa aa aa aa a	22	2.9401
+aa aa aa aa aa aa aa aa aa aa	29	3.4626
+aa aa aa aa aa aa aa aa aa aa aa aa a	37	1.4801
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa	44	1.2522
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa	89	1.4434
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa	179	1.5699
